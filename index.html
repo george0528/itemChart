@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="div" style="height: 200px;"></div>
+  <!-- vue -->
+  <div class="btns">
+    <button type="button" id="delete">削除</button>
+    <button type="button" id="update">更新</button>
+    <button type="button" id="add">追加</button>
+  </div>
+  <div id="vue">
+    <table>
+    </table>
+  </div>
+  <script src="ItemChart.js"></script>
+  <script src="main.js"></script>
+  <script>
+    let $deleteBtn = document.querySelector('#delete');
+    let $updateBtn = document.querySelector('#update');
+    let $addBtn = document.querySelector('#add');
+
+
+    //  random
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    // 削除
+    $deleteBtn.addEventListener('click', () => {
+      productData.delete();
+    });
+    // 更新
+    $updateBtn.addEventListener('click', () => {
+      productData.update();
+    });
+    // 追加
+    $addBtn.addEventListener('click', () => {
+      for (let i = 0; i < 10; i++) {
+        let x = getRandomIntInclusive(0, productData.max_x + 1);
+        let y = getRandomIntInclusive(0, productData.max_y + 1);
+        productData.dispositionItem({id: 30, x: x, y: y, imgPath: 'icon.png', itemId: 111});
+      }
+    });
+  </script>
+</body>
+</html>
