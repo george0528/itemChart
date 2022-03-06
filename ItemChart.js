@@ -1,11 +1,17 @@
 class ItemsChart {
-  constructor(table, {max_y = 6, max_x = 6, items}) {
+  constructor(table, {max_y = 6, max_x = 6, items, imgClick}) {
     this.table = table;
     this.table.style.borderCollapse = 'colloapse';
     this.max_y = max_y;
     this.max_x = max_x;
     this.items = items;
     this.#createItemsChart();
+    this.table.addEventListener('click', (e) => {
+      let target = e.target;
+      if(target.tagName == 'IMG') {
+        imgClick(target);
+      }
+    });
   }
 
   // publicメソッド

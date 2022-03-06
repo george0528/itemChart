@@ -19,7 +19,13 @@ let items = [
     itemId: 3,
   },
 ];
-let productData = new ItemsChart(table, {max_y: 6, max_x: 6, items: items});
+
+// callbackfunction
+const imgClick = (target) => {
+  console.log(target);
+}
+
+let productData = new ItemsChart(table, {max_y: 6, max_x: 6, items: items, imgClick: imgClick});
 table.addEventListener('click', (e) => {
   let target = e.target;
   if(target.tagName == 'IMG') {
