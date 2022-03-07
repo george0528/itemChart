@@ -10,7 +10,7 @@
     }
   },
   "keywords": ["img", "image", "chart", "graph", "item"],
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
