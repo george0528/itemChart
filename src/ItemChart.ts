@@ -49,6 +49,10 @@ export default class ItemsChart {
       console.log('xかyが最大値を超えています');
       return;
     }
+    if(item.x < this.x.min || item.y < this.y.min) {
+      console.log('xかyが最低値を下回ってています');
+      return;
+    }
     this.#dispositionImg(item);
   }
 
@@ -84,7 +88,7 @@ export default class ItemsChart {
     const tbody = document.createElement('tbody');
     const df_tbody = document.createDocumentFragment();
     // 縦(y)のループ
-    for (let y_index = 0; y_index < this.y.max; y_index++) {
+    for (let y_index = this.y.min; y_index < this.y.max; y_index++) {
       const tr = document.createElement('tr');
       const df_tr = document.createDocumentFragment();
 
@@ -92,7 +96,7 @@ export default class ItemsChart {
       const y = this.y.max - y_index - 1;
 
       // 横(x)のループ
-      for (let x_index = 0; x_index < this.x.max; x_index++) {
+      for (let x_index = this.x.min; x_index < this.x.max; x_index++) {
         // td作成
         const td = this.#createTd({
           x: x_index,
@@ -123,7 +127,7 @@ export default class ItemsChart {
     td.classList.add('td');
 
     // 一番左の行の場合
-    if(x == 0) {
+    if(x == this.x.min) {
       // class追加
       td.classList.add('left');
 
@@ -145,7 +149,7 @@ export default class ItemsChart {
     }
 
     // 一番下の列の場合
-    if(y == 0) {
+    if(y == this.y.min) {
       // class追加
       td.classList.add('bottom');
 

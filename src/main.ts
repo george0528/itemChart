@@ -28,7 +28,7 @@ const imgClick = (target: HTMLImageElement) => {
   console.log(target);
 }
 
-let productData = new ItemsChart(table, {x: {min: 2}, items: items, imgClick: imgClick});
+let productData = new ItemsChart(table, {items: items, imgClick: imgClick});
 
 let $deleteBtn = document.querySelector('#delete')!;
 let $updateBtn = document.querySelector('#update')!;
@@ -52,8 +52,8 @@ $updateBtn.addEventListener('click', () => {
 // 追加
 $addBtn.addEventListener('click', () => {
   for (let i = 0; i < 10; i++) {
-    let x = getRandomIntInclusive(0, productData.x.max);
-    let y = getRandomIntInclusive(0, productData.y.max);
+    let x = getRandomIntInclusive(productData.x.min, productData.x.max);
+    let y = getRandomIntInclusive(productData.y.min, productData.y.max);
     productData.dispositionItem({x: x, y: y, imgPath: '/src/icon.png', itemId: 111});
   }
 });
