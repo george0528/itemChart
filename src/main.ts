@@ -1,4 +1,4 @@
-import ItemsChart from './ItemChart';
+import ItemsChart from '../lib/ItemChart';
 import './style.css'
 
 let table: HTMLTableElement = document.querySelector('table')!;
