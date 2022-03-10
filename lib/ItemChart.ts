@@ -1,3 +1,5 @@
+import '../src/style.css'
+
 type Coord = {
   max: number;
   min: number;
